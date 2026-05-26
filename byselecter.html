@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Like Button Example</title>
+  <style>
+    .like-btn {
+      background-color: #008CBA;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .like-btn:hover {
+      background-color: #005f73;
+    }
+    .liked {
+      background-color: #e63946;
+    }
+  </style>
+</head>
+<body>
+
+<button class="like-btn">👍 Like</button>
+<p class="like-count">Likes: 0</p>
+
+<script>
+  let liked = false;
+  let count = 0;
+
+  const likeButton = document.querySelector(".like-btn");
+  const likeCount = document.querySelector(".like-count");
+
+  likeButton.addEventListener("click", () => {
+    liked = !liked;
+    if (liked) {
+      count++;
+      likeButton.classList.add("liked");
+      likeButton.textContent = "❤️ Liked";
+    } else {
+      count--;
+      likeButton.classList.remove("liked");
+      likeButton.textContent = "👍 Like";
+    }
+    likeCount.textContent = "Likes: " + count;
+  });
+</script>
+
+</body>
+</html>
