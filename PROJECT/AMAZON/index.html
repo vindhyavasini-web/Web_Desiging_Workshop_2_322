@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon-style Shopping Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="top-nav">
+      <a class="brand" href="#" aria-label="Amazon style home">
+        <span class="brand-name">amazon</span><span class="brand-dot">.in</span>
+        <span class="brand-smile"></span>
+      </a>
+
+      <button class="location nav-box" id="locationButton" type="button">
+        <span class="pin">O</span>
+        <span>
+          <small id="deliveryText">Delivering to Chennai 600001</small>
+          <strong>Update location</strong>
+        </span>
+      </button>
+
+      <form class="search" id="searchForm">
+        <select id="categorySelect" aria-label="Search category">
+          <option value="all">All</option>
+          <option value="electronics">Mobiles</option>
+          <option value="fashion">Fashion</option>
+          <option value="electronics">Electronics</option>
+          <option value="home">Home</option>
+        </select>
+        <div class="search-field">
+          <input id="searchInput" type="search" placeholder="Search Amazon.in" autocomplete="off">
+          <div class="suggestions" id="suggestions"></div>
+        </div>
+        <button class="voice-search" id="voiceSearch" type="button" aria-label="Search by voice">Mic</button>
+        <button class="search-btn" type="submit" aria-label="Search">Go</button>
+      </form>
+
+      <button class="language nav-box" type="button">EN</button>
+
+      <button class="account nav-box" id="accountButton" type="button">
+        <small>Hello, sign in</small>
+        <strong>Account & Lists</strong>
+      </button>
+
+      <button class="orders nav-box" id="ordersButton" type="button">
+        <small>Returns</small>
+        <strong>& Orders</strong>
+      </button>
+
+      <button class="cart nav-box" id="cartButton" type="button">
+        <span class="cart-count" id="cartCount">0</span>
+        <span class="cart-icon">[]</span>
+        <strong>Cart</strong>
+      </button>
+    </div>
+
+    <nav class="sub-nav" aria-label="Main categories">
+      <button type="button" class="menu-button" data-filter="all">Menu All</button>
+      <a href="#" data-filter="fresh">Fresh</a>
+      <a href="#" data-filter="video">MX Player</a>
+      <a href="#" data-filter="sell">Sell</a>
+      <a href="#" data-filter="deals">Best Sellers</a>
+      <a href="#" data-filter="electronics">Mobiles</a>
+      <a href="#" data-filter="deals">Today's Deals</a>
+      <a href="#" data-filter="support">Customer Service</a>
+      <a href="#" data-filter="fashion">Fashion</a>
+      <a href="#" data-filter="electronics">Electronics</a>
+      <a href="#" data-filter="prime">Prime</a>
+      <button type="button" class="voice-toggle" id="voiceToggle">Voice: On</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Featured promotions">
+      <button class="hero-arrow hero-prev" type="button" aria-label="Previous promotion">&lt;</button>
+      <div class="hero-slide active" style="--hero-image: url('https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1800&q=80');">
+        <div class="hero-copy">
+          <h1>Big deals, fast delivery</h1>
+          <p>Shop electronics, home essentials, fashion and more from one place.</p>
+        </div>
+      </div>
+      <div class="hero-slide" style="--hero-image: url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1800&q=80');">
+        <div class="hero-copy">
+          <h1>Festive picks for every room</h1>
+          <p>Refresh your home with cookware, decor, appliances and daily essentials.</p>
+        </div>
+      </div>
+      <div class="hero-slide" style="--hero-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=80');">
+        <div class="hero-copy">
+          <h1>Styles that move with you</h1>
+          <p>Explore shoes, watches, bags and fresh wardrobe favourites.</p>
+        </div>
+      </div>
+      <button class="hero-arrow hero-next" type="button" aria-label="Next promotion">&gt;</button>
+    </section>
+
+    <section class="notice">
+      Search, open products, add items to cart, update location, and sign in. This is a front-end demo store.
+    </section>
+
+    <section class="feature-strip" aria-label="Store benefits">
+      <div>
+        <strong id="dealTimer">00:00:00</strong>
+        <span>Deal ends soon</span>
+      </div>
+      <div>
+        <strong>Prime Fast</strong>
+        <span>Free delivery on eligible items</span>
+      </div>
+      <div>
+        <strong>Easy Returns</strong>
+        <span>7 day replacement demo</span>
+      </div>
+      <div>
+        <strong>Secure Pay</strong>
+        <span>Checkout preview available</span>
+      </div>
+    </section>
+
+    <section class="coupon-strip" aria-label="Coupons and quick deal finder">
+      <div>
+        <strong>Extra 10% off</strong>
+        <span>Use coupon <b id="couponCode">AMAZON10</b> on your cart subtotal.</span>
+      </div>
+      <button id="copyCoupon" type="button">Copy Coupon</button>
+      <div class="deal-finder" aria-label="Quick deal finder">
+        <button type="button" data-smart-filter="under1000">Under Rs.1,000</button>
+        <button type="button" data-smart-filter="toprated">Top Rated</button>
+        <button type="button" data-smart-filter="fastdelivery">Fast Delivery</button>
+        <button type="button" data-smart-filter="bigdiscount">Big Discounts</button>
+      </div>
+    </section>
+
+    <section class="deal-grid" aria-label="Shop categories">
+      <article class="deal-card">
+        <h2>Appliances for your home</h2>
+        <div class="mini-grid">
+          <a href="#" data-filter="home"><img src="https://images.unsplash.com/photo-1586208958839-06c17cacdf08?auto=format&fit=crop&w=420&q=80" alt="Air conditioner"><span>Air conditioners</span></a>
+          <a href="#" data-filter="home"><img src="https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=420&q=80" alt="Kitchen appliance"><span>Kitchen appliances</span></a>
+          <a href="#" data-filter="home"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=420&q=80" alt="Modern kitchen"><span>Refrigerators</span></a>
+          <a href="#" data-filter="home"><img src="https://images.unsplash.com/photo-1517663154410-3f917a805ae6?auto=format&fit=crop&w=420&q=80" alt="Washing machine"><span>Washing machines</span></a>
+        </div>
+        <a class="card-link" href="#" data-filter="home">See more</a>
+      </article>
+
+      <article class="deal-card">
+        <h2>Revamp your home in style</h2>
+        <div class="mini-grid">
+          <a href="#" data-filter="home"><img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=420&q=80" alt="Cushions and sofa"><span>Cushion covers</span></a>
+          <a href="#" data-filter="home"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=420&q=80" alt="Bedroom decor"><span>Bedsheets</span></a>
+          <a href="#" data-filter="home"><img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&w=420&q=80" alt="Table lamp"><span>Lighting</span></a>
+          <a href="#" data-filter="home"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=420&q=80" alt="Home storage"><span>Storage</span></a>
+        </div>
+        <a class="card-link" href="#" data-filter="home">Explore all</a>
+      </article>
+
+      <article class="deal-card sign-in-card">
+        <h2>Sign in for your best experience</h2>
+        <button type="button" id="signInButton">Sign in securely</button>
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80" alt="Laptop shopping">
+      </article>
+
+      <article class="deal-card">
+        <h2>Starting Rs.149 | Headphones</h2>
+        <div class="mini-grid">
+          <a href="#" data-filter="electronics"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=420&q=80" alt="Over ear headphones"><span>boAt</span></a>
+          <a href="#" data-filter="electronics"><img src="https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?auto=format&fit=crop&w=420&q=80" alt="Wireless earbuds"><span>Boult</span></a>
+          <a href="#" data-filter="electronics"><img src="https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=420&q=80" alt="Gaming headset"><span>Noise</span></a>
+          <a href="#" data-filter="electronics"><img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=420&q=80" alt="Black headphones"><span>Zebronics</span></a>
+        </div>
+        <a class="card-link" href="#" data-filter="electronics">See all offers</a>
+      </article>
+    </section>
+
+    <section class="product-row" aria-label="Today's deals">
+      <div class="section-head">
+        <h2>Today's Deals</h2>
+        <a href="#" data-filter="deals">See all deals</a>
+      </div>
+      <div class="scroll-row" id="dealProducts"></div>
+    </section>
+
+    <section class="deal-grid second-grid" aria-label="More categories">
+      <article class="wide-card">
+        <div>
+          <h2>Up to 60% off | Furniture and mattresses</h2>
+          <a class="card-link" href="#" data-filter="home">Shop now</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80" alt="Living room furniture">
+      </article>
+      <article class="wide-card">
+        <div>
+          <h2>Prime Video: popular movies and shows</h2>
+          <a class="card-link" href="#" data-filter="video">Start watching</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80" alt="Cinema seating">
+      </article>
+    </section>
+  </main>
+
+  <section class="results-panel" id="resultsPanel" aria-label="Product results">
+    <div class="results-toolbar">
+      <div class="section-head">
+        <h2 id="resultsTitle">Recommended for you</h2>
+        <button class="clear-results" id="clearResults" type="button">Clear</button>
+      </div>
+      <div class="controls">
+        <label>Sort
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="rating">Customer Rating</option>
+          </select>
+        </label>
+        <label>Budget
+          <select id="budgetSelect">
+            <option value="all">All prices</option>
+            <option value="1000">Under Rs.1,000</option>
+            <option value="5000">Under Rs.5,000</option>
+            <option value="20000">Under Rs.20,000</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="results-grid" id="resultsGrid"></div>
+  </section>
+
+  <section class="personal-panel" aria-label="Personal shopping tools">
+    <div class="personal-card">
+      <div class="section-head">
+        <h2>Your Wishlist</h2>
+        <button class="clear-results" id="clearWishlist" type="button">Clear</button>
+      </div>
+      <div class="compact-list" id="wishlistList"></div>
+    </div>
+    <div class="personal-card">
+      <div class="section-head">
+        <h2>Recently Viewed</h2>
+        <button class="clear-results" id="clearRecent" type="button">Clear</button>
+      </div>
+      <div class="compact-list" id="recentList"></div>
+    </div>
+  </section>
+
+  <footer>
+    <button class="back-top" id="backTop" type="button">Back to top</button>
+    <div class="footer-links">
+      <div><strong>Get to Know Us</strong><a href="#">About Amazon</a><a href="#">Careers</a><a href="#">Press Releases</a></div>
+      <div><strong>Connect with Us</strong><a href="#">Facebook</a><a href="#">Twitter</a><a href="#">Instagram</a></div>
+      <div><strong>Make Money with Us</strong><a href="#">Sell on Amazon</a><a href="#">Advertise Products</a><a href="#">Fulfilment</a></div>
+      <div><strong>Let Us Help You</strong><a href="#">Your Account</a><a href="#">Returns Centre</a><a href="#">Help</a></div>
+    </div>
+    <p class="disclaimer">Practice clone for learning HTML, CSS and JavaScript. Not affiliated with Amazon.</p>
+  </footer>
+
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <h2>Shopping Cart</h2>
+        <button class="icon-button" id="closeCart" type="button" aria-label="Close cart">x</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <strong id="cartTotal">Rs.0</strong>
+      </div>
+      <div class="cart-savings" id="cartSavings"></div>
+      <button class="checkout-button" id="checkoutButton" type="button">Proceed to Buy</button>
+    </div>
+  </aside>
+
+  <aside class="compare-tray" id="compareTray" aria-live="polite">
+    <div>
+      <strong>Compare products</strong>
+      <span id="compareCount">0 selected</span>
+    </div>
+    <button id="viewCompare" type="button">View Compare</button>
+    <button id="clearCompare" type="button">Clear</button>
+  </aside>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="icon-button modal-close" id="closeModal" type="button" aria-label="Close">x</button>
+      <img id="modalImage" src="" alt="">
+      <div>
+        <p class="modal-category" id="modalCategory"></p>
+        <h2 id="modalTitle"></h2>
+        <div class="stars" id="modalRating"></div>
+        <p id="modalDescription"></p>
+        <strong class="modal-price" id="modalPrice"></strong>
+        <button class="checkout-button" id="modalAddCart" type="button">Add to Cart</button>
+      </div>
+    </div>
+
+    <form class="modal small-modal" id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+      <button class="icon-button modal-close" data-close-modal type="button" aria-label="Close">x</button>
+      <h2 id="signInTitle">Sign in</h2>
+      <label>Email or mobile number<input id="emailInput" type="text" required></label>
+      <label>Password<input id="passwordInput" type="password" required></label>
+      <button class="checkout-button" type="submit">Continue</button>
+    </form>
+
+    <form class="modal small-modal" id="locationModal" role="dialog" aria-modal="true" aria-labelledby="locationTitle">
+      <button class="icon-button modal-close" data-close-modal type="button" aria-label="Close">x</button>
+      <h2 id="locationTitle">Choose your location</h2>
+      <label>Enter pincode<input id="pinInput" type="text" inputmode="numeric" maxlength="6" placeholder="600001" required></label>
+      <button class="checkout-button" type="submit">Apply</button>
+    </form>
+
+    <div class="modal compare-modal" id="compareModal" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+      <button class="icon-button modal-close" data-close-modal type="button" aria-label="Close">x</button>
+      <h2 id="compareTitle">Compare Products</h2>
+      <div class="compare-grid" id="compareGrid"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="voice-status" id="voiceStatus" aria-live="polite">Voice search ready</div>
+  <script src="script.js"></script>
+</body>
+</html>

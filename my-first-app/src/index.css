@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111111;
+  background: #f4f4f4;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.student-panel {
+  width: min(92vw, 1080px);
+  min-height: 620px;
+  padding: 44px 52px;
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.28);
+}
+
+.student-panel h1 {
+  margin: 0 0 28px;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.student-list {
+  display: grid;
+  gap: 18px;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  padding: 18px 22px;
+  background: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 4px;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 24px;
+}
+
+.card p {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    padding: 20px;
+  }
+
+  .student-panel {
+    min-height: auto;
+    padding: 28px 22px;
+    border-radius: 22px;
+  }
+
+  .student-panel h1 {
+    font-size: 28px;
+  }
+}
